@@ -1,4 +1,4 @@
-# Welcome to Amazon Web Scraper 👋
+# Welcome to Amazon Web Scrapper 👋
 
 ![Version](https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000)
 
