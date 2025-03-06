@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Traquer un produit{% endblock %}
+
+{% block content %}
+    
+    <h1>Traquer un produit</h1>
+    <form id="searchForm" method="POST">
+        <input type="text" name="link" placeholder="Entrez un lien à suivre ou un mot-clé" required>
+        <button type="submit" name="action" value="search" id="searchButton">Rechercher</button>
+    </form>
+
+    <div id="loading" class="loader"></div>
+
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% endif %}
+
+    {% if users %}
+        <div id="searchResultContent" class="{{ 'hidden' if not show_track_button else '' }}">
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr class="result" data-asin="{{ user.asin }}">
+                            <td><img src="{{ user.image_url }}" alt="Image du produit"></td>
+                            <td><h3>{{ user.name }}</h3></td>
+                            <td><h2>{{ user.price }}</h2></td>
+                            <td><span class="delete-btn" onclick="deleteProduct(this)">🗑</span></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <form id="trackForm" method="POST">
+                <div id="timeSelector" name="delay" class="{{ 'hidden' if not show_track_button else '' }}">
+                    <label for="time">Faire un tracking toutes les </label>
+                    <select id="time" name="delay">
+                        {% for i in range(1, 50) %}
+                            <option value="{{ i }}" {% if i == 24 %}selected{% endif %}>{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="time"> heures.</label>
+                </div>
+                <button type="submit" id="trackButton" name="action" value="track">Traquer</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/track.js') }}"></script>
+{% endblock %}

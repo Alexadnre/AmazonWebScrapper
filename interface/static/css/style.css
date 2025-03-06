@@ -1,0 +1,320 @@
+.header-container {
+    background-color: #232f3e;  /* Applique la couleur à la bannière + navbar */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f3f3;  /* Gris clair Amazon pour le reste de la page */
+    margin: 0;
+    padding: 0;
+    color: #333;  /* Texte en gris foncé pour le confort de lecture */
+}
+
+
+header {
+    background-color: #232f3e;  /* Bleu foncé Amazon pour la partie supérieure */
+    padding: 20px;
+}
+
+.img-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;  /* Pour prendre toute la hauteur de la page */
+}
+
+img {
+    width: 50%;  /* L'image occupe 50% de la largeur */
+    height: auto;  /* Pour garder les proportions de l'image */
+    object-fit: cover;  /* L'image est ajustée à la taille sans déformation */
+}
+
+.img-container::after {
+    content: '';
+    background-color: #146eb4;  /* Couleur de fond pour la partie restante */
+    flex-grow: 1;  /* Cette partie prend tout l'espace restant */
+    height: 100%;  /* Remplir toute la hauteur */
+}
+
+.navbar {
+    background-color: #304053;  /* Bleu foncé pour la navbar */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ff9900;  /* Bordure pour séparer */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    font-weight: 600;  /* Un peu plus épais pour la lisibilité */
+    transition: color 0.3s ease, transform 0.3s ease;  /* Effet de survol */
+}
+
+.navbar a:hover {
+    color: #ff9900;  /* Couleur orange au survol */
+    transform: scale(1.1);  /* Agrandissement léger */
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);  /* Effet d'ombre au survol */
+}
+
+h1 {
+    color: #232f3e;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #ff9900;  /* Bordure orange au focus */
+    outline: none;
+}
+
+button {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e68a00;
+}
+
+.delete-btn {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+
+.delete-btn:hover {
+    color: red;
+}
+
+.message {
+    color: green;
+    margin: 10px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Sélecteur de temps */
+.time-selector {
+    margin-top: 10px;
+}
+
+select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Résultats */
+#results {
+    margin-top: 20px;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    background: white;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.product-item:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.02);
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.product-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    border-radius: 5px;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+}
+
+.product-price {
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+/* Popup Styles */
+#product-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    border-radius: 8px;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+#popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    color: #232f3e;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1050;
+}
+
+#popup-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#popup-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#popup-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: red;
+    margin-top: 10px;
+}
+
+#price-large {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#price-history-chart {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+
+/* Table des résultats */
+.result {
+    margin-top: 20px;
+}
+
+.result img {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+.result-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+}
+
+.result-table th, .result-table td {
+    padding: 12px;
+    text-align: center;
+    border: none;
+}
+
+/* Loader */
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #ff9900;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

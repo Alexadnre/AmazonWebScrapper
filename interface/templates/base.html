@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Suivi des Liens{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <!-- Container du header avec l'image -->
+    <div class="header-container">
+        <img src="{{ url_for('static', filename='img/image.jpg') }}" alt="">
+        <div class="navbar">
+            <a href="/track">Traquer un produit</a>
+            <a href="/search">Suivi des produits</a>
+        </div>
+    </div>
+    
+    <!-- Contenu principal de la page -->
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>
